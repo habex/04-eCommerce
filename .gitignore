@@ -1,4 +1,6 @@
-.idea/modules.xml
+.idea/*
 eCommerce.iml
 eCommerce.iml
 /.idea/workspace.xml
+/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_11_2.xml
+/target/*
