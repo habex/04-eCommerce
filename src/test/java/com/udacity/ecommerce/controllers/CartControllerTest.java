@@ -67,7 +67,7 @@ public class CartControllerTest {
         when(userRepository.findByUsername("test")).thenReturn(user);
         when(itemRepository.findById(2L)).thenReturn(Optional.of(item));
 
-        ResponseEntity<Cart> cartResponse = cartController.addTocart(cartRequest);
+        ResponseEntity<Cart> cartResponse = cartController.addToCart(cartRequest);
         assertNotNull(cartResponse);
         assertEquals(200, cartResponse.getStatusCodeValue());
 
@@ -98,7 +98,7 @@ public class CartControllerTest {
         when(userRepository.findByUsername("test")).thenReturn(user);
         when(itemRepository.findById(2L)).thenReturn(Optional.of(item));
 
-        ResponseEntity<Cart> cartResponse = cartController.addTocart(cartRequest);
+        ResponseEntity<Cart> cartResponse = cartController.addToCart(cartRequest);
         assertNotNull(cartResponse);
         assertEquals(200, cartResponse.getStatusCodeValue());
 
