@@ -50,6 +50,14 @@ public class OrderController {
 			log.error("User : " + username + " " + HttpStatus.NOT_FOUND.name());
 			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.ok(orderRepository.findByUser(user));
+
+		List<UserOrder> orders = orderRepository.findByUser(user);
+
+		if(orders.isEmpty()){
+			log.error("Order " + HttpStatus.NOT_FOUND.name());
+			return ResponseEntity.notFound().build();
+		}
+		log.info("Number of Orders found " + orders.stream().count());
+		return ResponseEntity.ok(orders);
 	}
 }

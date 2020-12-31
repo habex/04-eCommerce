@@ -37,10 +37,10 @@ public class Cart {
 	@Column
 	@JsonProperty
 	private BigDecimal total;
-	
-	public BigDecimal getTotal() {
-		return total;
-	}
+
+	@JsonProperty
+	@Column
+	private Integer numberOfItems;
 
 	public void setTotal(BigDecimal total) {
 		this.total = total;
@@ -69,7 +69,15 @@ public class Cart {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
-	
+
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public Integer getNumberOfItems() {
+		return numberOfItems;
+	}
+
 	public void addItem(Item item) {
 		if(items == null) {
 			items = new ArrayList<>();
@@ -77,8 +85,10 @@ public class Cart {
 		items.add(item);
 		if(total == null) {
 			total = new BigDecimal(0);
+			numberOfItems=0;
 		}
 		total = total.add(item.getPrice());
+		numberOfItems++;
 	}
 	
 	public void removeItem(Item item) {
@@ -88,8 +98,10 @@ public class Cart {
 		items.remove(item);
 		if(total == null) {
 			total = new BigDecimal(0);
+			numberOfItems = 0;
 		}
 		total = total.subtract(item.getPrice());
+		numberOfItems--;
 	}
 
 	@Override

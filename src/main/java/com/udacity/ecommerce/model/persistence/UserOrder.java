@@ -41,6 +41,10 @@ public class UserOrder {
 	@Column
 	private BigDecimal total;
 
+	@JsonProperty
+	@Column
+	private Integer numberOfItems;
+
 	public Long getId() {
 		return id;
 	}
@@ -73,11 +77,20 @@ public class UserOrder {
 		this.total = total;
 	}
 
+	public Integer getNumberOfItems() {
+		return numberOfItems;
+	}
+
+	public void setNumberOfItems(Integer numberOfItems) {
+		this.numberOfItems = numberOfItems;
+	}
+
 	public static UserOrder createFromCart(Cart cart) {
 		UserOrder order = new UserOrder();
 		order.setItems(cart.getItems().stream().collect(Collectors.toList()));
 		order.setTotal(cart.getTotal());
 		order.setUser(cart.getUser());
+		order.setNumberOfItems(cart.getNumberOfItems());
 		return order;
 	}
 
@@ -88,6 +101,7 @@ public class UserOrder {
 				", items=" + items +
 				", user=" + user +
 				", total=" + total +
+				", numberOfItems=" + numberOfItems +
 				'}';
 	}
 }

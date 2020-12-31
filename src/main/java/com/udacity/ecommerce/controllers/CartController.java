@@ -50,20 +50,15 @@ public class CartController {
         }
         Cart cart = user.getCart();
 
-        if (cart==null){
-            log.warn("Cart fot not found" + user.getUsername() );
+        if (cart == null) {
+            log.warn("Cart fot not found" + user.getUsername());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
-
-        if (cart.getItems().stream().count() == 0) {
-            log.warn("Item : " + item.get().getName() + " not found in cart.");
-        }else {
-            IntStream.range(0, request.getQuantity())
-                    .forEach(i -> cart.addItem(item.get()));
-            cartRepository.save(cart);
-            log.info(cart.getItems().stream().count() +" "+item.get().getName()+ " added to cart.");
-        }
+        IntStream.range(0, request.getQuantity())
+                .forEach(i -> cart.addItem(item.get()));
+        cartRepository.save(cart);
+        log.info(cart.getItems().stream().count() + " " + item.get().getName() + " added to cart.");
 
         return ResponseEntity.ok(cart);
     }
@@ -83,18 +78,18 @@ public class CartController {
 
         Cart cart = user.getCart();
 
-        if (cart==null){
+        if (cart == null) {
             log.error("Cart fot not found for " + user.getUsername());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
         if (cart.getItems().stream().count() == 0) {
             log.warn("Item : " + item.get().getName() + " not found in cart.");
-        }else {
+        } else {
             IntStream.range(0, request.getQuantity())
                     .forEach(i -> cart.removeItem(item.get()));
             cartRepository.save(cart);
-            log.info(cart.getItems().stream().count() +" "+item.get().getName()+ " removed from cart.");
+            log.info(cart.getItems().stream().count() + " " + item.get().getName() + " removed from cart.");
         }
 
         return ResponseEntity.ok(cart);
