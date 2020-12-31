@@ -1,0 +1,31 @@
+---- IntelliJ IDEA coverage runner ---- 
+sampling ...
+include patterns:
+com\.udacity\.ecommerce\..*
+exclude patterns:
+2020-12-30 23:12:50.557  INFO 20400 --- [  restartedMain] c.u.ecommerce.ECommerceApplication       : Starting ECommerceApplication using Java 14 on HABEN-PC with PID 20400 (C:\IdeaProjects\my udacity projects\04-eCommerce\target\classes started by HABEN in C:\IdeaProjects\my udacity projects\04-eCommerce)
+2020-12-30 23:12:50.565  INFO 20400 --- [  restartedMain] c.u.ecommerce.ECommerceApplication       : No active profile set, falling back to default profiles: default
+2020-12-30 23:12:50.622  INFO 20400 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-12-30 23:12:50.622  INFO 20400 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-12-30 23:12:51.194  INFO 20400 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-12-30 23:12:51.253  INFO 20400 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 4 JPA repository interfaces.
+2020-12-30 23:12:52.116  INFO 20400 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-12-30 23:12:52.131  INFO 20400 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-30 23:12:52.131  INFO 20400 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2020-12-30 23:12:52.231  INFO 20400 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-30 23:12:52.231  INFO 20400 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1609 ms
+2020-12-30 23:12:52.280  INFO 20400 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-12-30 23:12:52.480  INFO 20400 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-12-30 23:12:52.486  INFO 20400 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bootapp'
+2020-12-30 23:12:52.681  INFO 20400 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-30 23:12:52.733  INFO 20400 --- [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.25.Final
+2020-12-30 23:12:52.887  INFO 20400 --- [  restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2020-12-30 23:12:53.014  INFO 20400 --- [  restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-12-30 23:12:53.752  INFO 20400 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-30 23:12:53.759  INFO 20400 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-30 23:12:54.138  WARN 20400 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-30 23:12:54.235  INFO 20400 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-12-30 23:12:54.598  INFO 20400 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3057305d, org.springframework.security.web.context.SecurityContextPersistenceFilter@2e5ee98e, org.springframework.security.web.header.HeaderWriterFilter@7034bb2c, org.springframework.web.filter.CorsFilter@34b9b2b7, org.springframework.security.web.authentication.logout.LogoutFilter@7cee266a, com.udacity.ecommerce.security.JWTAuthenticationFilter@78c85023, com.udacity.ecommerce.security.JWTAuthenticationVerficationFilter@35f3e713, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@39a60b03, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1f7b6a35, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3caffc28, org.springframework.security.web.session.SessionManagementFilter@1e62cd7d, org.springframework.security.web.access.ExceptionTranslationFilter@7b117fac, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4b2c67ac]
+2020-12-30 23:12:54.654  INFO 20400 --- [  restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-30 23:12:54.827  INFO 20400 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-12-30 23:12:54.838  INFO 20400 --- [  restartedMain] c.u.ecommerce.ECommerceApplication       : Started ECommerceApplication in 4.749 seconds (JVM running for 5.364)
