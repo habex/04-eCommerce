@@ -1,27 +1,19 @@
 package com.udacity.ecommerce.controllers;
 
 import com.udacity.ecommerce.TestUtils;
-import com.udacity.ecommerce.model.persistence.Cart;
-import com.udacity.ecommerce.model.persistence.Item;
-import com.udacity.ecommerce.model.persistence.User;
-import com.udacity.ecommerce.model.persistence.repositories.CartRepository;
-import com.udacity.ecommerce.model.persistence.repositories.ItemRepository;
-import com.udacity.ecommerce.model.persistence.repositories.UserRepository;
+import com.udacity.ecommerce.model.persistence.*;
+import com.udacity.ecommerce.model.persistence.repositories.*;
 import com.udacity.ecommerce.model.requests.ModifyCartRequest;
-import org.junit.Before;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.junit.*;
+import org.slf4j.*;
 import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 
 import static com.udacity.ecommerce.TestUtils.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class CartControllerTest {
 
@@ -78,10 +70,6 @@ public class CartControllerTest {
 
     @Test
     public void verify_remove_from_cart() {
-        ModifyCartRequest cartRequest = modifyCartRequest("Haben", 2l, 1);
-        cartRequest.setItemId(2L);
-        cartRequest.setUsername("test");
-        cartRequest.setQuantity(1);
 
         User user = createUser(1,"Haben","pass1234");
 
@@ -95,7 +83,9 @@ public class CartControllerTest {
 
         user.setCart(cart);
 
-        when(userRepository.findByUsername("test")).thenReturn(user);
+        ModifyCartRequest cartRequest = modifyCartRequest("Haben", 2l, 3);
+
+        when(userRepository.findByUsername("Haben")).thenReturn(user);
         when(itemRepository.findById(2L)).thenReturn(Optional.of(item));
 
         ResponseEntity<Cart> cartResponse = cartController.addToCart(cartRequest);
@@ -105,6 +95,25 @@ public class CartControllerTest {
         Cart savedCart = cartResponse.getBody();
         assertNotNull(savedCart);
         assertEquals(cart, savedCart);
+        assertEquals(cart.getId(), savedCart.getId());
+        assertEquals(cart.getUser(), savedCart.getUser());
+        ResponseEntity<Cart> cartRemovedResponse = cartController.removeFromCart(cartRequest);
+        assertNotNull(cartRemovedResponse);
+        assertEquals(200, cartRemovedResponse.getStatusCodeValue());
+
+        Cart cartRemoved = cartRemovedResponse.getBody();
+        assertNotNull(cartRemoved);
+        assertEquals(cart, cartRemoved);
+        assertEquals(cart.getItems().stream().count(), cartRemoved.getItems().stream().count());
+        assertEquals(cart.getUser(), cartRemoved.getUser());
+
+        // Removing item not in cart
+        ModifyCartRequest cartRemove = modifyCartRequest("Haben", 12l, 3);
+        ResponseEntity<Cart>   notInCartRemovedResponse = cartController.removeFromCart(cartRemove);
+        assertNotNull(notInCartRemovedResponse);
+
+        Cart notInCartRemoved = notInCartRemovedResponse.getBody();
+        assertNull(notInCartRemoved);
     }
 
 }
