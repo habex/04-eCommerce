@@ -1,6 +1,8 @@
 package com.udacity.ecommerce.model.persistence;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -87,7 +89,9 @@ public class UserOrder {
 
 	public static UserOrder createFromCart(Cart cart) {
 		UserOrder order = new UserOrder();
-		order.setItems(cart.getItems().stream().collect(Collectors.toList()));
+		List<Item> list = new ArrayList<>();
+		boolean b = list.addAll(cart.getItems());
+		order.setItems(list);
 		order.setTotal(cart.getTotal());
 		order.setUser(cart.getUser());
 		order.setNumberOfItems(cart.getNumberOfItems());
