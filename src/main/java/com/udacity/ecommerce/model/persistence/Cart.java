@@ -103,14 +103,4 @@ public class Cart {
 		total = total.subtract(item.getPrice());
 		numberOfItems--;
 	}
-
-	@Override
-	public String toString() {
-		return "Cart{" +
-				"id=" + id +
-				", items=" + items +
-				", user=" + user +
-				", total=" + total +
-				'}';
-	}
 }

@@ -93,15 +93,4 @@ public class UserOrder {
 		order.setNumberOfItems(cart.getNumberOfItems());
 		return order;
 	}
-
-	@Override
-	public String toString() {
-		return "UserOrder{" +
-				"id=" + id +
-				", items=" + items +
-				", user=" + user +
-				", total=" + total +
-				", numberOfItems=" + numberOfItems +
-				'}';
-	}
 }
